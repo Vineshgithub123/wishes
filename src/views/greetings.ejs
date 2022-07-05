@@ -5,18 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 </head>
 <body>
   <div class="texts" >
     <h3 id="h1" >Hello <%=data.Name%></h3>
-    <h3><%=data.FName%></h3>
-    <h2>Wish You</h2>
+    <h3><%=data.FName%></h3><br>
+    <h2>Wish You</h2><br>
     <h1> Happy New Year</h1>
 
 
 </div>
+<button type="button" id="btn" onclick="redirect()" class="btn btn-primary btn-lg btn-block">Create Another One</button>
+
 <canvas id ="Canvas"></canvas>
-  
     <script src="/src/animations/fireworks.js"></script>
 </body>
 <Style>
@@ -31,7 +34,7 @@ margin: 0;
         color: yellow;
         position: fixed;
         text-align: center;
-        margin-left: 17em;
+        margin-left: 22em;
         font-size: 200%;
     }
     #Canvas{
@@ -42,8 +45,16 @@ margin: 0;
         position: relative;
     }
 
+#btn{
+  position: fixed;
+  z-index: 1;
+  margin-top: 43em;
+}
 </Style>
 <script>
+function redirect(){
+  window.location.href= "/"
+}
     const canvas = document.getElementById("Canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;

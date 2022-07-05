@@ -82,17 +82,19 @@ wishdata.findOne({_id:id})
   var mailOptions = {
     from: "wishesforu123@outlook.com",
     to : user1.Email,
-    subject : ' Happy NewYear'+ user1.FName,
+    subject : ' Happy NewYear' + user1.FName,
     text:'send You a Gift ' + user1.Name +' Click on this link http://localhost:3000/greetings/<%=data._id%>'
   }
   transporter.sendMail(mailOptions, function(err,info){
     if (err){
         console.log(err)
-    }else {
+    }
+    else {
         alert('Email Sent')
         console.log("Email sent:" + info.response)
+    response.render("/sendmail")
+
     }
-    response.redirect("/sendmail")
   })
 })
 })

@@ -5,15 +5,13 @@ const bodyParser =require('body-parser')
 const app= new express()
 // const cors = require('cors')
 const {wishdata} = require ('./src/model.js/model')
-
-
-
-
+const nodemailer = require("nodemailer")
 // db connection
-//mongodb password: SmcrOgAD6iNQAImJ
+//mongodb password: aNoo2poRxFRQ2HzQ
 const mongoose = require('mongoose')
 const req = require('express/lib/request')
-const db = 'mongodb+srv://Vin_challenge:SmcrOgAD6iNQAImJ@cluster0.dfdbqrn.mongodb.net/?retryWrites=true&w=majority'
+const { response } = require('express')
+const db = 'mongodb+srv://Vin_challenge:aNoo2poRxFRQ2HzQ@cluster0.dfdbqrn.mongodb.net/?retryWrites=true&w=majority'
 mongoose.connect(db,{
     useNewUrlParser : true
 
@@ -66,43 +64,40 @@ app.get('/greetings/:id',(req,res)=>{
 
 })
 
-// greetings({
+// nodemailer
+app.get('/submit/:id',(req,res)=>{
+  var id = req.params.id
+wishdata.findOne({_id:id})
+.then((user1)=>{
+    console.log(user1);
 
-// })
-// const req = require('express/lib/request');
-const nodemailer = require("nodemailer")
-function sendmail(){
+  var transporter = nodemailer.createTransport({
 
-}
-
-    var to = req.body.Email
-    // var subject = "http://localhost:3000/greetings/<%=data._id%>"
-    const mailTransporter = nodemailer.createTransport({
-        port:465,
-        service : "gmail",
-        secure:true,
-        auth : {
-          user:  "vinesh161099@gmail.com",
-          pass: "aqoenwrlpdxpxrry"}
-    
-    })
-    var mailOptions = {
-    
-        from : "vinesh161099@gmail.com",
-        to   :"vineshmm26@gmail.com",
-        subject :'hellooooo',
-        text:"he he he ready aaayi"
-    
+    service : "hotmail",
+    auth :{
+        user : 'wishesforu123@outlook.com',
+        pass:"Vinwish@123"
     }
-    mailTransporter.sendMail(mailOptions,function(err,info){
-        if (err){
-            console.log(err);
-        }else{
-            console.log("Email Sent :" + info.response);
-        }
-    })
+  });
+  var mailOptions = {
+    from: "wishesforu123@outlook.com",
+    to : user1.Email,
+    subject : ' Happy NewYear'+ user1.FName,
+    text:'send You a Gift ' + user1.Name +' Click on this link http://localhost:3000/greetings/<%=data._id%>'
+  }
+  transporter.sendMail(mailOptions, function(err,info){
+    if (err){
+        console.log(err)
+    }else {
+        alert('Email Sent')
+        console.log("Email sent:" + info.response)
+    }
+    response.redirect("/sendmail")
+  })
+})
+})
 
-     
+
 
     
 

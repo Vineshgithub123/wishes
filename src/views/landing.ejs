@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/landing.css">
     <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body style="background-color: black;" >
+
     <div class="form">
         <form action="/sendmail" method="post">
             <div class="form-group">
@@ -17,11 +20,11 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Friend's Name</label>
-              <input type="text" class="form-control"  id="FName" name="FName" placeholder="Friend's Name">
+              <input type="text" class="form-control"  id="FName" name="FName" placeholder="Friend's Name" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Friend's Email</label>
-                <input type="email" class="form-control"  id="Email" name="Email" placeholder="Friend's Email">
+                <input type="email" class="form-control"  id="Email" name="Email" placeholder="Friend's Email" Note required>
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
               </div>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -42,5 +45,7 @@
         margin-left: 35%;
         
     }
+
+
 </style>
 </html>
